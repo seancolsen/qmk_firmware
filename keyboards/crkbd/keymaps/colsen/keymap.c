@@ -81,6 +81,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   )
 };
 
+enum combos {
+  C_ESC,
+  C_LEFT
+};
+
+const uint16_t PROGMEM en_combo[] = {KC_E, KC_N, COMBO_END};
+const uint16_t PROGMEM fw_combo[] = {KC_F, KC_W, COMBO_END};
+
+combo_t key_combos[COMBO_COUNT] = {
+  [C_ESC]  = COMBO(fw_combo, KC_ESC),
+  [C_LEFT] = COMBO(en_combo, KC_LEFT)
+};
+
 int RGB_current_mode;
 
 void persistent_default_layer_set(uint16_t default_layer) {
