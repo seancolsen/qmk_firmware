@@ -83,15 +83,28 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 enum combos {
   C_ESC,
-  C_LEFT
+  C_LEFT,
+  C_RIGHT,
+  C_UP,
+  C_TAB,
+  C_PAGE_UP
 };
 
-const uint16_t PROGMEM en_combo[] = {KC_E, KC_N, COMBO_END};
 const uint16_t PROGMEM fw_combo[] = {KC_F, KC_W, COMBO_END};
+
+const uint16_t PROGMEM en_combo[] = {KC_E, KC_N, COMBO_END};
+const uint16_t PROGMEM ei_combo[] = {KC_E, KC_I, COMBO_END};
+const uint16_t PROGMEM lu_combo[] = {KC_L, KC_U, COMBO_END};
+const uint16_t PROGMEM uy_combo[] = {KC_U, KC_Y, COMBO_END};
+const uint16_t PROGMEM ly_combo[] = {KC_L, KC_Y, COMBO_END};
+const uint16_t PROGMEM luy_combo[] = {KC_L, KC_U, KC_Y, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
   [C_ESC]  = COMBO(fw_combo, KC_ESC),
-  [C_LEFT] = COMBO(en_combo, KC_LEFT)
+  [C_LEFT] = COMBO(en_combo, KC_LEFT),
+  [C_UP] = COMBO(lu_combo, KC_UP),
+  [C_TAB] = COMBO(uy_combo, KC_TAB),
+  [C_PAGE_UP] = COMBO(luy_combo, KC_PGUP)
 };
 
 int RGB_current_mode;
