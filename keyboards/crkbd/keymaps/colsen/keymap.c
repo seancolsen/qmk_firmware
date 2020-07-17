@@ -5,7 +5,9 @@ extern uint8_t is_master;
 enum custom_keycodes {
     CC_EMQM = SAFE_RANGE,
     CC_COSC,
-    CC_PDCL
+    CC_PDCL,
+
+    CC_DWL
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -70,6 +72,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         unregister_code(KC_DOT);
       }
       return false;
+    case CC_DWL:
+      if (record->event.pressed){
+        //SEND_STRING(SS_DOWN(X_LCTL) SS_TAP(X_BSPC) SS_UP(X_LCTL));
+        SEND_STRING("x");
+      }
+      return false;
     default:
       return true;
   }
@@ -83,18 +91,23 @@ enum combos {
   C_TAB,
   C_PAGE_UP,
   C_BACKSPACE,
-  C_DELTE
+  C_DELTE,
+  C_DWL
 };
 
 const uint16_t PROGMEM fw_combo[] = {KC_F, KC_W, COMBO_END};
 const uint16_t PROGMEM rs_combo[] = {KC_R, KC_S, COMBO_END};
 const uint16_t PROGMEM st_combo[] = {KC_S, KC_T, COMBO_END};
+const uint16_t PROGMEM vb_combo[] = {KC_V, KC_B, COMBO_END};
+
+const uint16_t PROGMEM ars_combo[] = {KC_A, KC_R, KC_S, COMBO_END};
 
 const uint16_t PROGMEM en_combo[] = {KC_E, KC_N, COMBO_END};
 const uint16_t PROGMEM ei_combo[] = {KC_E, KC_I, COMBO_END};
 const uint16_t PROGMEM lu_combo[] = {KC_L, KC_U, COMBO_END};
 const uint16_t PROGMEM uy_combo[] = {KC_U, KC_Y, COMBO_END};
 const uint16_t PROGMEM ly_combo[] = {KC_L, KC_Y, COMBO_END};
+
 const uint16_t PROGMEM luy_combo[] = {KC_L, KC_U, KC_Y, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
@@ -105,4 +118,5 @@ combo_t key_combos[COMBO_COUNT] = {
   [C_PAGE_UP] = COMBO(luy_combo, KC_PGUP),
   [C_BACKSPACE] = COMBO(rs_combo, KC_BSPC),
   [C_DELTE] = COMBO(st_combo, KC_DEL),
+  [C_DWL] = COMBO(vb_combo, CC_DWL)
 };
