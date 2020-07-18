@@ -28,4 +28,4 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define TAPPING_TOGGLE 2
 
 // #define COMBO_VARIABLE_LEN // I couldn't get this to work
-#define COMBO_COUNT 9
+#define COMBO_COUNT 57
