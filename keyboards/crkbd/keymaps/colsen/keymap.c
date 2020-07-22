@@ -14,14 +14,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_NO   , KC_Q , KC_W , KC_F , KC_P    , KC_G    , KC_J    , KC_L    , KC_U    , KC_Y    , CC_EMQM , KC_NO   ,
     KC_LCTL , KC_A , KC_R , KC_S , KC_T    , KC_D    , KC_H    , KC_N    , KC_E    , KC_I    , KC_O    , KC_LCTL ,
     KC_LALT , KC_Z , KC_X , KC_C , KC_V    , KC_B    , KC_K    , KC_M    , CC_COSC , CC_PDCL , KC_QUOT , KC_LALT ,
-                                   KC_LGUI , KC_LSFT , TT(1)   , KC_UNDS , KC_SPC  , KC_ENT  
+                                   KC_LGUI , KC_LSFT , TT(1)   , KC_ENT  , KC_SPC  , KC_UNDS
   ),
 
   [1] = LAYOUT(
     _______ , KC_0    , KC_1    , KC_2    , KC_3    , KC_4      ,   KC_5    , KC_6    , KC_7    , KC_8    , KC_9    , _______ ,
-    _______ , KC_LCBR , KC_RCBR , KC_LPRN , KC_RPRN , KC_DLR    ,   KC_HASH , KC_ASTR , KC_EQL  , KC_PLUS , KC_AT   , _______ ,
-    _______ , KC_LT   , KC_GT   , KC_LBRC , KC_RBRC , KC_PERC   ,   KC_CIRC , KC_AMPR , KC_PIPE , _______ , _______ , _______ ,
-                                  KC_NO   , KC_NO   , _______   ,   KC_TILD , _______ , _______ 
+    _______ , KC_LCBR , KC_RCBR , KC_LPRN , KC_RPRN , KC_DLR    ,   KC_HASH , KC_MINS , KC_EQL  , KC_ASTR , KC_PLUS , _______ ,
+    _______ , KC_LT   , KC_GT   , KC_LBRC , KC_RBRC , KC_PERC   ,   KC_CIRC , KC_BSLS , KC_SLSH , _______ , KC_GRV  , _______ ,
+                                  KC_AMPR , KC_PIPE , _______   ,   KC_TILD , _______ , _______ 
   ),
   
 };
