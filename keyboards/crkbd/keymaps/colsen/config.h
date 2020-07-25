@@ -24,8 +24,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define USE_SERIAL_PD2
 
-#define TAPPING_TERM 90
+#define TAPPING_TERM 200
+#define COMBO_TERM 20
 #define TAPPING_TOGGLE 2
 
 // #define COMBO_VARIABLE_LEN // I couldn't get this to work
-#define COMBO_COUNT 74
+#define COMBO_COUNT 148
