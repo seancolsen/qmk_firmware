@@ -11,10 +11,10 @@ enum custom_keycodes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [0] = LAYOUT(
-    KC_NO   , KC_Q , KC_W , KC_F , KC_P           , KC_G    , KC_J    , KC_L    , KC_U    , KC_Y    , CC_EMQM , KC_NO   ,
-    KC_LCTL , KC_A , KC_R , KC_S , KC_T           , KC_D    , KC_H    , KC_N    , KC_E    , KC_I    , KC_O    , KC_LCTL ,
-    KC_LALT , KC_Z , KC_X , KC_C , KC_V           , KC_B    , KC_K    , KC_M    , CC_COSC , CC_PDCL , KC_QUOT , KC_LALT ,
-                                   LGUI_T(KC_ENT) , KC_LSFT , TT(1)   , KC_ENT  , KC_SPC  , KC_UNDS
+    KC_NO   , KC_Q , KC_W , KC_F , KC_P    , KC_G    , KC_J    , KC_L    , KC_U    , KC_Y    , CC_EMQM , KC_NO   ,
+    KC_LCTL , KC_A , KC_R , KC_S , KC_T    , KC_D    , KC_H    , KC_N    , KC_E    , KC_I    , KC_O    , KC_LCTL ,
+    KC_LALT , KC_Z , KC_X , KC_C , KC_V    , KC_B    , KC_K    , KC_M    , CC_COSC , CC_PDCL , KC_QUOT , KC_LALT ,
+                                   KC_LGUI , KC_LSFT , TT(1)   , KC_ENT  , KC_SPC  , KC_UNDS
   ),
 
   [1] = LAYOUT(
@@ -469,8 +469,8 @@ combo_t key_combos[COMBO_COUNT] = {
   [COMBO_s_v_2] = COMBO_ACTION(s_v_2_combo),
   [COMBO_s_x_1] = COMBO_ACTION(s_x_1_combo),
   [COMBO_s_x_2] = COMBO_ACTION(s_x_2_combo),
-  [COMBO_t_b_1] = COMBO(t_b_1_combo, KC_MPLY),
-  [COMBO_t_b_2] = COMBO(t_b_2_combo, KC_MPLY),
+  [COMBO_t_b_1] = COMBO(t_b_1_combo, KC_ENT),
+  [COMBO_t_b_2] = COMBO(t_b_2_combo, KC_ENT),
   [COMBO_t_d_1] = COMBO(t_d_1_combo, KC_TAB),
   [COMBO_t_d_2] = COMBO(t_d_2_combo, KC_TAB),
   [COMBO_t_v_1] = COMBO(t_v_1_combo, KC_VOLD),
