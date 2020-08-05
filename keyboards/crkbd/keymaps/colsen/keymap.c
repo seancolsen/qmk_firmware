@@ -13,44 +13,41 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_NO , KC_Q    , KC_W    , KC_F    , KC_P    , KC_G      ,   KC_J    , KC_L    , KC_U    , KC_Y    , KC_Z    , KC_NO ,
     KC_NO , KC_A    , KC_R    , KC_S    , KC_T    , KC_D      ,   KC_H    , KC_N    , KC_E    , KC_I    , KC_O    , KC_NO ,
     KC_NO , KC_LCTL , KC_LALT , KC_C    , KC_V    , KC_B      ,   KC_K    , KC_M    , CC_COMA , CC_DOT  , KC_X    , KC_NO ,
-                                KC_LGUI , KC_LSFT , TT(1)     ,   KC_ENT  , KC_SPC  , KC_UNDS
+                                KC_LGUI , KC_LSFT , TT(1)     ,   KC_ENT  , KC_SPC  , KC_QUOT
   ),
 
   [1] = LAYOUT(
     KC_NO , KC_0    , KC_1    , KC_2    , KC_3    , KC_4      ,   KC_5    , KC_6    , KC_7    , KC_8    , KC_9    , KC_NO ,
     KC_NO , KC_LCBR , KC_RCBR , KC_LPRN , KC_RPRN , KC_DLR    ,   KC_HASH , KC_MINS , KC_EQL  , KC_ASTR , KC_PLUS , KC_NO ,
-    KC_NO , _______ , _______ , KC_LBRC , KC_RBRC , KC_LT     ,   KC_GT   , KC_SLSH , KC_GRV  , _______ , KC_PERC , KC_NO ,
-                                KC_CIRC , KC_TILD , _______   ,   _______ , _______ , KC_BSLS 
+    KC_NO , _______ , _______ , KC_LBRC , KC_RBRC , KC_LT     ,   KC_GT   , KC_SLSH , _______ , _______ , KC_PERC , KC_NO ,
+                                KC_CIRC , KC_TILD , _______   ,   _______ , _______ , KC_GRV 
   ),
   
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-    case CC_COMA: // Coma / single quote
+    case CC_COMA: // Coma / question mark
       if (record->event.pressed){
         if (get_mods() & MOD_BIT(KC_LSHIFT) || get_mods() & MOD_BIT(KC_RSHIFT)){
-          uint8_t current_mods = get_mods();
-          set_mods(current_mods & ~(MOD_LSFT | MOD_RSFT)); // Turn off shift
-          register_code(KC_QUOT);
-          set_mods(current_mods); // Turn shift back on again
+          register_code(KC_SLSH);
         } else {
           register_code(KC_COMM);
         }
       } else {
-        unregister_code(KC_QUOT);
+        unregister_code(KC_SLSH);
         unregister_code(KC_COMM);
       }
       return false;
-    case CC_DOT: // Period / double quote
+    case CC_DOT: // Period / exclamation mark
       if (record->event.pressed){
         if (get_mods() & MOD_BIT(KC_LSHIFT) || get_mods() & MOD_BIT(KC_RSHIFT)){
-          register_code(KC_QUOT);
+          register_code(KC_1);
         } else {
           register_code(KC_DOT);
         }
       } else {
-        unregister_code(KC_QUOT);
+        unregister_code(KC_1);
         unregister_code(KC_DOT);
       }
       return false;
@@ -144,10 +141,8 @@ const uint16_t PROGMEM q_a_1_combo[] = {KC_Q, KC_A, COMBO_END};
 const uint16_t PROGMEM q_a_2_combo[] = {KC_0, KC_LCBR, COMBO_END};
 const uint16_t PROGMEM q_w_1_combo[] = {KC_Q, KC_W, COMBO_END};
 const uint16_t PROGMEM q_w_2_combo[] = {KC_0, KC_1, COMBO_END};
-const uint16_t PROGMEM r_alt_1_combo[] = {KC_R, KC_LALT, COMBO_END};
-const uint16_t PROGMEM r_alt_2_combo[] = {KC_RCBR, KC_LALT, COMBO_END};
-const uint16_t PROGMEM r_ctrl_1_combo[] = {KC_R, KC_LCTL, COMBO_END};
-const uint16_t PROGMEM r_ctrl_2_combo[] = {KC_RCBR, KC_LCTL, COMBO_END};
+const uint16_t PROGMEM r_c_1_combo[] = {KC_R, KC_C, COMBO_END};
+const uint16_t PROGMEM r_c_2_combo[] = {KC_RCBR, KC_LBRC, COMBO_END};
 const uint16_t PROGMEM r_f_1_combo[] = {KC_R, KC_F, COMBO_END};
 const uint16_t PROGMEM r_f_2_combo[] = {KC_RCBR, KC_2, COMBO_END};
 const uint16_t PROGMEM r_s_1_combo[] = {KC_R, KC_S, COMBO_END};
@@ -190,6 +185,8 @@ const uint16_t PROGMEM w_p_1_combo[] = {KC_W, KC_P, COMBO_END};
 const uint16_t PROGMEM w_p_2_combo[] = {KC_1, KC_3, COMBO_END};
 const uint16_t PROGMEM w_r_1_combo[] = {KC_W, KC_R, COMBO_END};
 const uint16_t PROGMEM w_r_2_combo[] = {KC_1, KC_RCBR, COMBO_END};
+const uint16_t PROGMEM w_s_1_combo[] = {KC_W, KC_S, COMBO_END};
+const uint16_t PROGMEM w_s_2_combo[] = {KC_1, KC_LPRN, COMBO_END};
 const uint16_t PROGMEM y_e_1_combo[] = {KC_Y, KC_E, COMBO_END};
 const uint16_t PROGMEM y_e_2_combo[] = {KC_8, KC_EQL, COMBO_END};
 const uint16_t PROGMEM y_i_1_combo[] = {KC_Y, KC_I, COMBO_END};
@@ -290,10 +287,8 @@ enum combos {
   COMBO_q_a_2,
   COMBO_q_w_1,
   COMBO_q_w_2,
-  COMBO_r_alt_1,
-  COMBO_r_alt_2,
-  COMBO_r_ctrl_1,
-  COMBO_r_ctrl_2,
+  COMBO_r_c_1,
+  COMBO_r_c_2,
   COMBO_r_f_1,
   COMBO_r_f_2,
   COMBO_r_s_1,
@@ -336,6 +331,8 @@ enum combos {
   COMBO_w_p_2,
   COMBO_w_r_1,
   COMBO_w_r_2,
+  COMBO_w_s_1,
+  COMBO_w_s_2,
   COMBO_y_e_1,
   COMBO_y_e_2,
   COMBO_y_i_1,
@@ -365,8 +362,8 @@ combo_t key_combos[COMBO_COUNT] = {
   [COMBO_c_v_2] = COMBO_ACTION(c_v_2_combo),
   [COMBO_coma_dot_1] = COMBO(coma_dot_1_combo, KC_DEL),
   [COMBO_coma_dot_2] = COMBO(coma_dot_2_combo, KC_DEL),
-  [COMBO_d_b_1] = COMBO(d_b_1_combo, KC_EXLM),
-  [COMBO_d_b_2] = COMBO(d_b_2_combo, KC_EXLM),
+  [COMBO_d_b_1] = COMBO(d_b_1_combo, KC_PIPE),
+  [COMBO_d_b_2] = COMBO(d_b_2_combo, KC_PIPE),
   [COMBO_dot_x_1] = COMBO_ACTION(dot_x_1_combo),
   [COMBO_dot_x_2] = COMBO_ACTION(dot_x_2_combo),
   [COMBO_e_dot_1] = COMBO_ACTION(e_dot_1_combo),
@@ -385,8 +382,8 @@ combo_t key_combos[COMBO_COUNT] = {
   [COMBO_f_t_2] = COMBO_ACTION(f_t_2_combo),
   [COMBO_g_d_1] = COMBO(g_d_1_combo, KC_F4),
   [COMBO_g_d_2] = COMBO(g_d_2_combo, KC_F4),
-  [COMBO_h_k_1] = COMBO(h_k_1_combo, KC_SCLN),
-  [COMBO_h_k_2] = COMBO(h_k_2_combo, KC_SCLN),
+  [COMBO_h_k_1] = COMBO(h_k_1_combo, KC_AT),
+  [COMBO_h_k_2] = COMBO(h_k_2_combo, KC_AT),
   [COMBO_h_n_1] = COMBO_ACTION(h_n_1_combo),
   [COMBO_h_n_2] = COMBO_ACTION(h_n_2_combo),
   [COMBO_i_coma_1] = COMBO_ACTION(i_coma_1_combo),
@@ -423,12 +420,12 @@ combo_t key_combos[COMBO_COUNT] = {
   [COMBO_n_i_2] = COMBO(n_i_2_combo, KC_HOME),
   [COMBO_n_k_1] = COMBO(n_k_1_combo, KC_PGDN),
   [COMBO_n_k_2] = COMBO(n_k_2_combo, KC_PGDN),
-  [COMBO_n_m_1] = COMBO(n_m_1_combo, KC_COLN),
-  [COMBO_n_m_2] = COMBO(n_m_2_combo, KC_COLN),
+  [COMBO_n_m_1] = COMBO(n_m_1_combo, KC_UNDS),
+  [COMBO_n_m_2] = COMBO(n_m_2_combo, KC_UNDS),
   [COMBO_o_dot_1] = COMBO_ACTION(o_dot_1_combo),
   [COMBO_o_dot_2] = COMBO_ACTION(o_dot_2_combo),
-  [COMBO_p_d_1] = COMBO(p_d_1_combo, KC_PIPE),
-  [COMBO_p_d_2] = COMBO(p_d_2_combo, KC_PIPE),
+  [COMBO_p_d_1] = COMBO(p_d_1_combo, KC_SCLN),
+  [COMBO_p_d_2] = COMBO(p_d_2_combo, KC_SCLN),
   [COMBO_p_g_1] = COMBO(p_g_1_combo, KC_END),
   [COMBO_p_g_2] = COMBO(p_g_2_combo, KC_END),
   [COMBO_p_t_1] = COMBO(p_t_1_combo, KC_F3),
@@ -437,10 +434,8 @@ combo_t key_combos[COMBO_COUNT] = {
   [COMBO_q_a_2] = COMBO(q_a_2_combo, KC_F10),
   [COMBO_q_w_1] = COMBO(q_w_1_combo, KC_HOME),
   [COMBO_q_w_2] = COMBO(q_w_2_combo, KC_HOME),
-  [COMBO_r_alt_1] = COMBO(r_alt_1_combo, KC_F11),
-  [COMBO_r_alt_2] = COMBO(r_alt_2_combo, KC_F11),
-  [COMBO_r_ctrl_1] = COMBO(r_ctrl_1_combo, KC_AT),
-  [COMBO_r_ctrl_2] = COMBO(r_ctrl_2_combo, KC_AT),
+  [COMBO_r_c_1] = COMBO(r_c_1_combo, KC_BSLASH),
+  [COMBO_r_c_2] = COMBO(r_c_2_combo, KC_BSLASH),
   [COMBO_r_f_1] = COMBO_ACTION(r_f_1_combo),
   [COMBO_r_f_2] = COMBO_ACTION(r_f_2_combo),
   [COMBO_r_s_1] = COMBO(r_s_1_combo, KC_ESC),
@@ -461,8 +456,8 @@ combo_t key_combos[COMBO_COUNT] = {
   [COMBO_t_b_2] = COMBO(t_b_2_combo, KC_ENT),
   [COMBO_t_d_1] = COMBO(t_d_1_combo, KC_TAB),
   [COMBO_t_d_2] = COMBO(t_d_2_combo, KC_TAB),
-  [COMBO_t_v_1] = COMBO(t_v_1_combo, KC_QUES),
-  [COMBO_t_v_2] = COMBO(t_v_2_combo, KC_QUES),
+  [COMBO_t_v_1] = COMBO(t_v_1_combo, KC_AMPR),
+  [COMBO_t_v_2] = COMBO(t_v_2_combo, KC_AMPR),
   [COMBO_u_e_1] = COMBO(u_e_1_combo, KC_F7),
   [COMBO_u_e_2] = COMBO(u_e_2_combo, KC_F7),
   [COMBO_u_i_1] = COMBO_ACTION(u_i_1_combo),
@@ -473,8 +468,8 @@ combo_t key_combos[COMBO_COUNT] = {
   [COMBO_u_y_2] = COMBO(u_y_2_combo, KC_APP),
   [COMBO_v_b_1] = COMBO(v_b_1_combo, KC_SPC),
   [COMBO_v_b_2] = COMBO(v_b_2_combo, KC_SPC),
-  [COMBO_w_a_1] = COMBO(w_a_1_combo, KC_AMPR),
-  [COMBO_w_a_2] = COMBO(w_a_2_combo, KC_AMPR),
+  [COMBO_w_a_1] = COMBO(w_a_1_combo, KC_COLN),
+  [COMBO_w_a_2] = COMBO(w_a_2_combo, KC_COLN),
   [COMBO_w_f_1] = COMBO(w_f_1_combo, KC_LEFT),
   [COMBO_w_f_2] = COMBO(w_f_2_combo, KC_LEFT),
   [COMBO_w_f_p_1] = COMBO(w_f_p_1_combo, KC_UP),
@@ -483,6 +478,8 @@ combo_t key_combos[COMBO_COUNT] = {
   [COMBO_w_p_2] = COMBO(w_p_2_combo, KC_DOWN),
   [COMBO_w_r_1] = COMBO(w_r_1_combo, KC_F1),
   [COMBO_w_r_2] = COMBO(w_r_2_combo, KC_F1),
+  [COMBO_w_s_1] = COMBO(w_s_1_combo, KC_F11),
+  [COMBO_w_s_2] = COMBO(w_s_2_combo, KC_F11),
   [COMBO_y_e_1] = COMBO_ACTION(y_e_1_combo),
   [COMBO_y_e_2] = COMBO_ACTION(y_e_2_combo),
   [COMBO_y_i_1] = COMBO(y_i_1_combo, KC_F8),
