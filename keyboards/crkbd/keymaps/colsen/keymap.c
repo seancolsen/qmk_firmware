@@ -69,10 +69,10 @@ const uint16_t PROGMEM c_v_1_combo[] = {KC_C, KC_V, COMBO_END};
 const uint16_t PROGMEM c_v_2_combo[] = {KC_LBRC, KC_RBRC, COMBO_END};
 const uint16_t PROGMEM coma_dot_1_combo[] = {CC_COMA, CC_DOT, COMBO_END};
 const uint16_t PROGMEM coma_dot_2_combo[] = {KC_GRV, CC_DOT, COMBO_END};
+const uint16_t PROGMEM coma_dot_x_1_combo[] = {CC_COMA, CC_DOT, KC_X, COMBO_END};
+const uint16_t PROGMEM coma_dot_x_2_combo[] = {KC_GRV, CC_DOT, KC_PERC, COMBO_END};
 const uint16_t PROGMEM d_b_1_combo[] = {KC_D, KC_B, COMBO_END};
 const uint16_t PROGMEM d_b_2_combo[] = {KC_DLR, KC_LT, COMBO_END};
-const uint16_t PROGMEM dot_x_1_combo[] = {CC_DOT, KC_X, COMBO_END};
-const uint16_t PROGMEM dot_x_2_combo[] = {CC_DOT, KC_PERC, COMBO_END};
 const uint16_t PROGMEM e_dot_1_combo[] = {KC_E, CC_DOT, COMBO_END};
 const uint16_t PROGMEM e_dot_2_combo[] = {KC_EQL, CC_DOT, COMBO_END};
 const uint16_t PROGMEM e_i_1_combo[] = {KC_E, KC_I, COMBO_END};
@@ -91,16 +91,12 @@ const uint16_t PROGMEM g_d_1_combo[] = {KC_G, KC_D, COMBO_END};
 const uint16_t PROGMEM g_d_2_combo[] = {KC_4, KC_DLR, COMBO_END};
 const uint16_t PROGMEM h_k_1_combo[] = {KC_H, KC_K, COMBO_END};
 const uint16_t PROGMEM h_k_2_combo[] = {KC_HASH, KC_GT, COMBO_END};
-const uint16_t PROGMEM h_n_1_combo[] = {KC_H, KC_N, COMBO_END};
-const uint16_t PROGMEM h_n_2_combo[] = {KC_HASH, KC_MINS, COMBO_END};
 const uint16_t PROGMEM i_o_1_combo[] = {KC_I, KC_O, COMBO_END};
 const uint16_t PROGMEM i_o_2_combo[] = {KC_ASTR, KC_PLUS, COMBO_END};
 const uint16_t PROGMEM j_h_1_combo[] = {KC_J, KC_H, COMBO_END};
 const uint16_t PROGMEM j_h_2_combo[] = {KC_5, KC_HASH, COMBO_END};
 const uint16_t PROGMEM j_l_1_combo[] = {KC_J, KC_L, COMBO_END};
 const uint16_t PROGMEM j_l_2_combo[] = {KC_5, KC_6, COMBO_END};
-const uint16_t PROGMEM k_m_1_combo[] = {KC_K, KC_M, COMBO_END};
-const uint16_t PROGMEM k_m_2_combo[] = {KC_GT, KC_SLSH, COMBO_END};
 const uint16_t PROGMEM l_h_1_combo[] = {KC_L, KC_H, COMBO_END};
 const uint16_t PROGMEM l_h_2_combo[] = {KC_6, KC_HASH, COMBO_END};
 const uint16_t PROGMEM l_n_1_combo[] = {KC_L, KC_N, COMBO_END};
@@ -193,10 +189,10 @@ enum combos {
   COMBO_c_v_2,
   COMBO_coma_dot_1,
   COMBO_coma_dot_2,
+  COMBO_coma_dot_x_1,
+  COMBO_coma_dot_x_2,
   COMBO_d_b_1,
   COMBO_d_b_2,
-  COMBO_dot_x_1,
-  COMBO_dot_x_2,
   COMBO_e_dot_1,
   COMBO_e_dot_2,
   COMBO_e_i_1,
@@ -215,16 +211,12 @@ enum combos {
   COMBO_g_d_2,
   COMBO_h_k_1,
   COMBO_h_k_2,
-  COMBO_h_n_1,
-  COMBO_h_n_2,
   COMBO_i_o_1,
   COMBO_i_o_2,
   COMBO_j_h_1,
   COMBO_j_h_2,
   COMBO_j_l_1,
   COMBO_j_l_2,
-  COMBO_k_m_1,
-  COMBO_k_m_2,
   COMBO_l_h_1,
   COMBO_l_h_2,
   COMBO_l_n_1,
@@ -318,10 +310,10 @@ combo_t key_combos[COMBO_COUNT] = {
   [COMBO_c_v_2] = COMBO_ACTION(c_v_2_combo),
   [COMBO_coma_dot_1] = COMBO(coma_dot_1_combo, KC_RGHT),
   [COMBO_coma_dot_2] = COMBO(coma_dot_2_combo, KC_RGHT),
+  [COMBO_coma_dot_x_1] = COMBO_ACTION(coma_dot_x_1_combo),
+  [COMBO_coma_dot_x_2] = COMBO_ACTION(coma_dot_x_2_combo),
   [COMBO_d_b_1] = COMBO(d_b_1_combo, KC_PIPE),
   [COMBO_d_b_2] = COMBO(d_b_2_combo, KC_PIPE),
-  [COMBO_dot_x_1] = COMBO_ACTION(dot_x_1_combo),
-  [COMBO_dot_x_2] = COMBO_ACTION(dot_x_2_combo),
   [COMBO_e_dot_1] = COMBO(e_dot_1_combo, KC_DOWN),
   [COMBO_e_dot_2] = COMBO(e_dot_2_combo, KC_DOWN),
   [COMBO_e_i_1] = COMBO(e_i_1_combo, KC_MINS),
@@ -340,16 +332,12 @@ combo_t key_combos[COMBO_COUNT] = {
   [COMBO_g_d_2] = COMBO(g_d_2_combo, KC_F4),
   [COMBO_h_k_1] = COMBO(h_k_1_combo, KC_AT),
   [COMBO_h_k_2] = COMBO(h_k_2_combo, KC_AT),
-  [COMBO_h_n_1] = COMBO_ACTION(h_n_1_combo),
-  [COMBO_h_n_2] = COMBO_ACTION(h_n_2_combo),
   [COMBO_i_o_1] = COMBO(i_o_1_combo, KC_MINS),
   [COMBO_i_o_2] = COMBO(i_o_2_combo, KC_MINS),
   [COMBO_j_h_1] = COMBO(j_h_1_combo, KC_F5),
   [COMBO_j_h_2] = COMBO(j_h_2_combo, KC_F5),
   [COMBO_j_l_1] = COMBO(j_l_1_combo, KC_INS),
   [COMBO_j_l_2] = COMBO(j_l_2_combo, KC_INS),
-  [COMBO_k_m_1] = COMBO_ACTION(k_m_1_combo),
-  [COMBO_k_m_2] = COMBO_ACTION(k_m_2_combo),
   [COMBO_l_h_1] = COMBO_ACTION(l_h_1_combo),
   [COMBO_l_h_2] = COMBO_ACTION(l_h_2_combo),
   [COMBO_l_n_1] = COMBO(l_n_1_combo, KC_F6),
@@ -440,22 +428,18 @@ void process_combo_event(uint8_t combo_index, bool p) {
     case COMBO_alt_v_2: if (p) {SEND_STRING(SS_LCTL("ax"));}  break;
     case COMBO_c_v_1: if (p) {SEND_STRING(SS_LCTL("s"));}  break;
     case COMBO_c_v_2: if (p) {SEND_STRING(SS_LCTL("s"));}  break;
-    case COMBO_dot_x_1: if (p) {SEND_STRING(SS_DOWN(X_LCTL)SS_DOWN(X_RGHT));} else {SEND_STRING(SS_UP(X_RGHT)SS_UP(X_LCTL));} break;
-    case COMBO_dot_x_2: if (p) {SEND_STRING(SS_DOWN(X_LCTL)SS_DOWN(X_RGHT));} else {SEND_STRING(SS_UP(X_RGHT)SS_UP(X_LCTL));} break;
+    case COMBO_coma_dot_x_1: if (p) {SEND_STRING(SS_DOWN(X_LCTL)SS_DOWN(X_RGHT));} else {SEND_STRING(SS_UP(X_RGHT)SS_UP(X_LCTL));} break;
+    case COMBO_coma_dot_x_2: if (p) {SEND_STRING(SS_DOWN(X_LCTL)SS_DOWN(X_RGHT));} else {SEND_STRING(SS_UP(X_RGHT)SS_UP(X_LCTL));} break;
     case COMBO_f_t_1: if (p) {SEND_STRING(SS_LCTL("v"));}  break;
     case COMBO_f_t_2: if (p) {SEND_STRING(SS_LCTL("v"));}  break;
-    case COMBO_h_n_1: if (p) {SEND_STRING(SS_DOWN(X_LCTL)SS_DOWN(X_BSPC));} else {SEND_STRING(SS_UP(X_BSPC)SS_UP(X_LCTL));} break;
-    case COMBO_h_n_2: if (p) {SEND_STRING(SS_DOWN(X_LCTL)SS_DOWN(X_BSPC));} else {SEND_STRING(SS_UP(X_BSPC)SS_UP(X_LCTL));} break;
-    case COMBO_k_m_1: if (p) {SEND_STRING(SS_DOWN(X_LCTL)SS_DOWN(X_LEFT));} else {SEND_STRING(SS_UP(X_LEFT)SS_UP(X_LCTL));} break;
-    case COMBO_k_m_2: if (p) {SEND_STRING(SS_DOWN(X_LCTL)SS_DOWN(X_LEFT));} else {SEND_STRING(SS_UP(X_LEFT)SS_UP(X_LCTL));} break;
     case COMBO_l_h_1: if (p) {SEND_STRING(SS_TAP(X_HOME)SS_TAP(X_ENT)SS_TAP(X_LEFT));}  break;
     case COMBO_l_h_2: if (p) {SEND_STRING(SS_TAP(X_HOME)SS_TAP(X_ENT)SS_TAP(X_LEFT));}  break;
     case COMBO_l_u_1: if (p) {SEND_STRING(SS_DOWN(X_LSFT)SS_DOWN(X_TAB));} else {SEND_STRING(SS_UP(X_TAB)SS_UP(X_LSFT));} break;
     case COMBO_l_u_2: if (p) {SEND_STRING(SS_DOWN(X_LSFT)SS_DOWN(X_TAB));} else {SEND_STRING(SS_UP(X_TAB)SS_UP(X_LSFT));} break;
-    case COMBO_m_coma_dot_1: if (p) {SEND_STRING(SS_TAP(X_END) SS_DOWN(X_LSFT)SS_TAP(X_HOME)SS_UP(X_LSFT) SS_TAP(X_DEL));}  break;
-    case COMBO_m_coma_dot_2: if (p) {SEND_STRING(SS_TAP(X_END) SS_DOWN(X_LSFT)SS_TAP(X_HOME)SS_UP(X_LSFT) SS_TAP(X_DEL));}  break;
-    case COMBO_n_e_i_1: if (p) {SEND_STRING(SS_TAP(X_END)SS_DOWN(X_LSFT)SS_TAP(X_HOME)SS_UP(X_LSFT));}  break;
-    case COMBO_n_e_i_2: if (p) {SEND_STRING(SS_TAP(X_END)SS_DOWN(X_LSFT)SS_TAP(X_HOME)SS_UP(X_LSFT));}  break;
+    case COMBO_m_coma_dot_1: if (p) {SEND_STRING(SS_DOWN(X_LCTL)SS_DOWN(X_LEFT));} else {SEND_STRING(SS_UP(X_LEFT)SS_UP(X_LCTL));} break;
+    case COMBO_m_coma_dot_2: if (p) {SEND_STRING(SS_DOWN(X_LCTL)SS_DOWN(X_LEFT));} else {SEND_STRING(SS_UP(X_LEFT)SS_UP(X_LCTL));} break;
+    case COMBO_n_e_i_1: if (p) {SEND_STRING(SS_DOWN(X_LCTL)SS_DOWN(X_BSPC));} else {SEND_STRING(SS_UP(X_BSPC)SS_UP(X_LCTL));} break;
+    case COMBO_n_e_i_2: if (p) {SEND_STRING(SS_DOWN(X_LCTL)SS_DOWN(X_BSPC));} else {SEND_STRING(SS_UP(X_BSPC)SS_UP(X_LCTL));} break;
     case COMBO_n_k_1: if (p) {SEND_STRING(SS_TAP(X_END)SS_TAP(X_ENT));}  break;
     case COMBO_n_k_2: if (p) {SEND_STRING(SS_TAP(X_END)SS_TAP(X_ENT));}  break;
     case COMBO_p_g_1: if (p) {SEND_STRING(SS_DOWN(X_LCTL)SS_TAP(X_END)SS_UP(X_LCTL));}  break;
