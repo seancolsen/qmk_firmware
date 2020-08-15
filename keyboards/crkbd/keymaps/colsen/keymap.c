@@ -57,6 +57,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 
 // Begin paste from spreadsheet `def 1`
+const uint16_t PROGMEM a_alt_1_combo[] = {KC_A, KC_LALT, COMBO_END};
+const uint16_t PROGMEM a_alt_2_combo[] = {KC_LCBR, KC_LALT, COMBO_END};
 const uint16_t PROGMEM a_r_1_combo[] = {KC_A, KC_R, COMBO_END};
 const uint16_t PROGMEM a_r_2_combo[] = {KC_LCBR, KC_RCBR, COMBO_END};
 const uint16_t PROGMEM alt_c_1_combo[] = {KC_LALT, KC_C, COMBO_END};
@@ -107,6 +109,8 @@ const uint16_t PROGMEM m_coma_1_combo[] = {KC_M, CC_COMA, COMBO_END};
 const uint16_t PROGMEM m_coma_2_combo[] = {KC_GT, CC_COMA, COMBO_END};
 const uint16_t PROGMEM m_coma_dot_1_combo[] = {KC_M, CC_COMA, CC_DOT, COMBO_END};
 const uint16_t PROGMEM m_coma_dot_2_combo[] = {KC_GT, CC_COMA, CC_DOT, COMBO_END};
+const uint16_t PROGMEM m_dot_1_combo[] = {KC_M, CC_DOT, COMBO_END};
+const uint16_t PROGMEM m_dot_2_combo[] = {KC_GT, CC_DOT, COMBO_END};
 const uint16_t PROGMEM n_e_1_combo[] = {KC_N, KC_E, COMBO_END};
 const uint16_t PROGMEM n_e_2_combo[] = {KC_SLSH, KC_EQL, COMBO_END};
 const uint16_t PROGMEM n_e_i_1_combo[] = {KC_N, KC_E, KC_I, COMBO_END};
@@ -125,6 +129,8 @@ const uint16_t PROGMEM p_t_1_combo[] = {KC_P, KC_T, COMBO_END};
 const uint16_t PROGMEM p_t_2_combo[] = {KC_3, KC_RPRN, COMBO_END};
 const uint16_t PROGMEM q_o_1_combo[] = {KC_Q, KC_O, COMBO_END};
 const uint16_t PROGMEM q_o_2_combo[] = {KC_9, KC_PLUS, COMBO_END};
+const uint16_t PROGMEM r_ctrl_1_combo[] = {KC_R, KC_LCTL, COMBO_END};
+const uint16_t PROGMEM r_ctrl_2_combo[] = {KC_RCBR, KC_LCTL, COMBO_END};
 const uint16_t PROGMEM r_f_1_combo[] = {KC_R, KC_F, COMBO_END};
 const uint16_t PROGMEM r_f_2_combo[] = {KC_RCBR, KC_2, COMBO_END};
 const uint16_t PROGMEM r_s_1_combo[] = {KC_R, KC_S, COMBO_END};
@@ -167,8 +173,6 @@ const uint16_t PROGMEM w_r_1_combo[] = {KC_W, KC_R, COMBO_END};
 const uint16_t PROGMEM w_r_2_combo[] = {KC_1, KC_RCBR, COMBO_END};
 const uint16_t PROGMEM y_i_1_combo[] = {KC_Y, KC_I, COMBO_END};
 const uint16_t PROGMEM y_i_2_combo[] = {KC_8, KC_ASTR, COMBO_END};
-const uint16_t PROGMEM y_q_1_combo[] = {KC_Y, KC_Q, COMBO_END};
-const uint16_t PROGMEM y_q_2_combo[] = {KC_8, KC_9, COMBO_END};
 const uint16_t PROGMEM z_a_1_combo[] = {KC_Z, KC_A, COMBO_END};
 const uint16_t PROGMEM z_a_2_combo[] = {KC_0, KC_LCBR, COMBO_END};
 const uint16_t PROGMEM z_w_1_combo[] = {KC_Z, KC_W, COMBO_END};
@@ -177,6 +181,8 @@ const uint16_t PROGMEM z_w_2_combo[] = {KC_0, KC_1, COMBO_END};
 
 enum combos {
   // Begin paste from spreadsheet `def 2`
+  COMBO_a_alt_1,
+  COMBO_a_alt_2,
   COMBO_a_r_1,
   COMBO_a_r_2,
   COMBO_alt_c_1,
@@ -227,6 +233,8 @@ enum combos {
   COMBO_m_coma_2,
   COMBO_m_coma_dot_1,
   COMBO_m_coma_dot_2,
+  COMBO_m_dot_1,
+  COMBO_m_dot_2,
   COMBO_n_e_1,
   COMBO_n_e_2,
   COMBO_n_e_i_1,
@@ -245,6 +253,8 @@ enum combos {
   COMBO_p_t_2,
   COMBO_q_o_1,
   COMBO_q_o_2,
+  COMBO_r_ctrl_1,
+  COMBO_r_ctrl_2,
   COMBO_r_f_1,
   COMBO_r_f_2,
   COMBO_r_s_1,
@@ -287,8 +297,6 @@ enum combos {
   COMBO_w_r_2,
   COMBO_y_i_1,
   COMBO_y_i_2,
-  COMBO_y_q_1,
-  COMBO_y_q_2,
   COMBO_z_a_1,
   COMBO_z_a_2,
   COMBO_z_w_1,
@@ -298,6 +306,8 @@ enum combos {
 
 combo_t key_combos[COMBO_COUNT] = {
   // Begin paste from spreadsheet `def 3`
+  [COMBO_a_alt_1] = COMBO(a_alt_1_combo, DYN_REC_START1),
+  [COMBO_a_alt_2] = COMBO(a_alt_2_combo, DYN_REC_START1),
   [COMBO_a_r_1] = COMBO(a_r_1_combo, KC_BSPC),
   [COMBO_a_r_2] = COMBO(a_r_2_combo, KC_BSPC),
   [COMBO_alt_c_1] = COMBO_ACTION(alt_c_1_combo),
@@ -348,6 +358,8 @@ combo_t key_combos[COMBO_COUNT] = {
   [COMBO_m_coma_2] = COMBO(m_coma_2_combo, KC_LEFT),
   [COMBO_m_coma_dot_1] = COMBO_ACTION(m_coma_dot_1_combo),
   [COMBO_m_coma_dot_2] = COMBO_ACTION(m_coma_dot_2_combo),
+  [COMBO_m_dot_1] = COMBO(m_dot_1_combo, KC_APP),
+  [COMBO_m_dot_2] = COMBO(m_dot_2_combo, KC_APP),
   [COMBO_n_e_1] = COMBO(n_e_1_combo, KC_BSPC),
   [COMBO_n_e_2] = COMBO(n_e_2_combo, KC_BSPC),
   [COMBO_n_e_i_1] = COMBO_ACTION(n_e_i_1_combo),
@@ -366,6 +378,8 @@ combo_t key_combos[COMBO_COUNT] = {
   [COMBO_p_t_2] = COMBO(p_t_2_combo, KC_F3),
   [COMBO_q_o_1] = COMBO(q_o_1_combo, KC_F9),
   [COMBO_q_o_2] = COMBO(q_o_2_combo, KC_F9),
+  [COMBO_r_ctrl_1] = COMBO(r_ctrl_1_combo, DYN_MACRO_PLAY1),
+  [COMBO_r_ctrl_2] = COMBO(r_ctrl_2_combo, DYN_MACRO_PLAY1),
   [COMBO_r_f_1] = COMBO_ACTION(r_f_1_combo),
   [COMBO_r_f_2] = COMBO_ACTION(r_f_2_combo),
   [COMBO_r_s_1] = COMBO(r_s_1_combo, KC_ESC),
@@ -408,8 +422,6 @@ combo_t key_combos[COMBO_COUNT] = {
   [COMBO_w_r_2] = COMBO(w_r_2_combo, KC_F1),
   [COMBO_y_i_1] = COMBO(y_i_1_combo, KC_F8),
   [COMBO_y_i_2] = COMBO(y_i_2_combo, KC_F8),
-  [COMBO_y_q_1] = COMBO(y_q_1_combo, KC_APP),
-  [COMBO_y_q_2] = COMBO(y_q_2_combo, KC_APP),
   [COMBO_z_a_1] = COMBO(z_a_1_combo, KC_F10),
   [COMBO_z_a_2] = COMBO(z_a_2_combo, KC_F10),
   [COMBO_z_w_1] = COMBO_ACTION(z_w_1_combo),
