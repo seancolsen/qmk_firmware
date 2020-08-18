@@ -12,3 +12,5 @@ SRC +=  ./lib/glcdfont.c \
 COMBO_ENABLE = yes
 
 EXTRAKEY_ENABLE = yes          # Audio control and System control
+
+DYNAMIC_MACRO_ENABLE = yes
