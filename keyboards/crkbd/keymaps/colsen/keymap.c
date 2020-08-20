@@ -422,8 +422,8 @@ void process_combo_event(uint8_t combo_index, bool p) {
     case COMBO_f_p_2: if (p) {SEND_STRING(SS_LCTL("a"));}  break;
     case COMBO_f_t_1: if (p) {SEND_STRING(SS_LCTL("v"));}  break;
     case COMBO_f_t_2: if (p) {SEND_STRING(SS_LCTL("v"));}  break;
-    case COMBO_l_h_1: if (p) {SEND_STRING(SS_TAP(X_HOME)SS_TAP(X_ENT)SS_TAP(X_LEFT));}  break;
-    case COMBO_l_h_2: if (p) {SEND_STRING(SS_TAP(X_HOME)SS_TAP(X_ENT)SS_TAP(X_LEFT));}  break;
+    case COMBO_l_h_1: if (p) {SEND_STRING(SS_TAP(X_HOME)SS_TAP(X_ENT)SS_TAP(X_UP));}  break;
+    case COMBO_l_h_2: if (p) {SEND_STRING(SS_TAP(X_HOME)SS_TAP(X_ENT)SS_TAP(X_UP));}  break;
     case COMBO_m_coma_dot_1: if (p) {SEND_STRING(SS_DOWN(X_LCTL)SS_DOWN(X_LEFT));} else {SEND_STRING(SS_UP(X_LEFT)SS_UP(X_LCTL));} break;
     case COMBO_m_coma_dot_2: if (p) {SEND_STRING(SS_DOWN(X_LCTL)SS_DOWN(X_LEFT));} else {SEND_STRING(SS_UP(X_LEFT)SS_UP(X_LCTL));} break;
     case COMBO_n_e_i_1: if (p) {SEND_STRING(SS_DOWN(X_LCTL)SS_DOWN(X_BSPC));} else {SEND_STRING(SS_UP(X_BSPC)SS_UP(X_LCTL));} break;
